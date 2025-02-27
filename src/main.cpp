@@ -1,20 +1,31 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
-/*    Author:       Bug36                                                     */
+/*    Author:       Melfely                                                   */
 /*    Created:      2/20/2025, 6:29:44 PM                                     */
-/*    Description:  V5 project                                                */
+/*    Description:  Drive code for Bilbot                                     */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
 #include "vex.h"
+#include "functions.h"
 
 using namespace vex;
+
 
 // A global instance of competition
 competition Competition;
 
-// define your global instances of motors and other devices here
+//Controller
+  controller Controller1 = controller();
+
+//Motors 
+  motor FR_Motor = motor(PORT2);
+  motor FL_Motor = motor(PORT9, true);
+  motor BR_Motor = motor(PORT10);
+  motor BL_Motor = motor(PORT1, true);
+// Variables
+
 
 /*---------------------------------------------------------------------------*/
 /*                          Pre-Autonomous Functions                         */
@@ -59,16 +70,11 @@ void autonomous(void) {
 /*---------------------------------------------------------------------------*/
 
 void usercontrol(void) {
-  // User control code here, inside the loop
-  while (1) {
-    // This is the main execution loop for the user control program.
-    // Each time through the loop your program should update motor + servo
-    // values based on feedback from the joysticks.
+  thread threadDrive = thread(threadedDrive);
+  thread threadBrakes = thread(threadedBrakes);
+  thread threadDriveMotors = thread(threadedDriveMotors);
 
-    // ........................................................................
-    // Insert user code here. This is where you use the joystick values to
-    // update your motors, etc.
-    // ........................................................................
+  while (1) {
 
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
