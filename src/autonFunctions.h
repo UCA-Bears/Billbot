@@ -3,15 +3,15 @@
 
 #include "functions.h"
 
-// Unites: Imperical
+// Units: Imperical Base(Inches and RPM)
 
 // Bot specific
 
-static const int WHEELSIZE = 0;
+static const int WHEELSIZE = 3.25;
 
-static const float BOT_LENGTH =0;
+static const float BOT_LENGTH =16;
 
-static const float WHEELSPEED = 0;
+static const float WHEELSPEED = 400;
 
 // Derived Constants
 
