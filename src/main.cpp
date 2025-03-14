@@ -24,7 +24,9 @@ competition Competition;
   motor FL_Motor = motor(PORT9, true);
   motor BR_Motor = motor(PORT10);
   motor BL_Motor = motor(PORT1, true);
+  motor A_Motor = motor(PORT3, true);
 // Variables
+  double armSpeed = 100;
 
 
 /*---------------------------------------------------------------------------*/
@@ -73,6 +75,7 @@ void usercontrol(void) {
   thread threadDrive = thread(threadedDrive);
   thread threadBrakes = thread(threadedBrakes);
   thread threadDriveMotors = thread(threadedDriveMotors);
+  thread threadArm = thread(threadedArm); 
 
   while (1) {
 
