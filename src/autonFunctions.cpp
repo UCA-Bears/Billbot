@@ -9,14 +9,16 @@ void drive(int speed, float time) {
         wait(time, msec);
 
     } else if ( time < 0) { //Drive Forward
-        FL_Motor.spin(fwd, speed, pct);
-        BL_Motor.spin(fwd, speed, pct);
-        FR_Motor.spin(fwd, speed, pct);
-        BR_Motor.spin(fwd, speed, pct);
+        FL_Motor.spin(reverse, speed, pct);
+        BL_Motor.spin(reverse, speed, pct);
+        FR_Motor.spin(reverse, speed, pct);
+        BR_Motor.spin(reverse, speed, pct);
         wait(time * -1, msec);
     }
-    RD_Motors.stop(hold);
-    LD_Motors.stop(hold);
+    FL_Motor.stop(hold);
+    BL_Motor.stop(hold);
+    FR_Motor.stop(hold);
+    BR_Motor.stop(hold);
 }
 void drive ( int speed, vex::distanceUnits distance)
 {
